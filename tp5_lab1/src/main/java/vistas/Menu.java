@@ -48,6 +48,11 @@ private static ArrayList<Producto> productos=new ArrayList<>();
         jLabel1.setText("Gestion de productos");
 
         jCCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electronica", "Ropa", "Alimentos" }));
+        jCCategoria.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCCategoriaItemStateChanged(evt);
+            }
+        });
 
         jLabel2.setText("Categoria");
 
@@ -133,6 +138,10 @@ private static ArrayList<Producto> productos=new ArrayList<>();
         Escritorio.add(adp);
         Escritorio.moveToFront(adp);
     }//GEN-LAST:event_jbVerProductoActionPerformed
+
+    private void jCCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCCategoriaItemStateChanged
+   
+    }//GEN-LAST:event_jCCategoriaItemStateChanged
  public static ArrayList<Producto> getProductos() {
         return productos;
     }

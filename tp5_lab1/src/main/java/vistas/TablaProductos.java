@@ -25,7 +25,7 @@ public class TablaProductos extends javax.swing.JInternalFrame {
 
      private void inicializarTabla() {
         modeloTabla = new DefaultTableModel();
-      
+      modeloTabla.addColumn("Categoria");
         modeloTabla.addColumn("Nombre");
         modeloTabla.addColumn("Precio");
        jtTablaProductos.setModel(modeloTabla);
@@ -38,6 +38,7 @@ public class TablaProductos extends javax.swing.JInternalFrame {
               modeloTabla.addRow(new Object[]{
                    p.getNombre(),
                     p.getPrecio()
+                      
                       });
                }
     }

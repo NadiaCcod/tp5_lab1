@@ -129,8 +129,8 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         }
 
         String descripcion = jTNombre.getText();
-
-        Producto guardar = new Producto(descripcion, precio);
+        String categoria = Menu.g
+        Producto guardar = new Producto(descripcion, precio, categoria);
         ArrayList<Producto> lista=Menu.getProductos();
         lista.add(guardar);
 
