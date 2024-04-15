@@ -4,12 +4,15 @@
  */
 package vistas;
 
+import com.mycompany.tp5_lab1.Producto;
+import java.util.ArrayList;
+
 /**
  *
  * @author sapat
  */
 public class Menu extends javax.swing.JFrame {
-
+private static ArrayList<Producto> productos=new ArrayList<>();
     /**
      * Creates new form Menu
      */
@@ -30,7 +33,8 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jCCategoria = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jdEscritorio = new javax.swing.JDesktopPane();
+        Escritorio = new javax.swing.JDesktopPane();
+        jbVerProducto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,16 +51,23 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel2.setText("Categoria");
 
-        javax.swing.GroupLayout jdEscritorioLayout = new javax.swing.GroupLayout(jdEscritorio);
-        jdEscritorio.setLayout(jdEscritorioLayout);
-        jdEscritorioLayout.setHorizontalGroup(
-            jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
+        Escritorio.setLayout(EscritorioLayout);
+        EscritorioLayout.setHorizontalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 407, Short.MAX_VALUE)
         );
-        jdEscritorioLayout.setVerticalGroup(
-            jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        EscritorioLayout.setVerticalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 375, Short.MAX_VALUE)
         );
+
+        jbVerProducto.setText("Ver productos");
+        jbVerProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVerProductoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,7 +75,6 @@ public class Menu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBAgregar)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -75,9 +85,11 @@ public class Menu extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jCCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(23, 23, 23)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jdEscritorio)
+                        .addGap(23, 23, 23))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jbVerProducto)
+                        .addComponent(jBAgregar)))
+                .addComponent(Escritorio)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -85,7 +97,7 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jdEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(166, 166, 166)
@@ -93,7 +105,9 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jCCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(49, 49, 49)
-                        .addComponent(jBAgregar)))
+                        .addComponent(jBAgregar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbVerProducto)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -102,15 +116,26 @@ public class Menu extends javax.swing.JFrame {
 
     private void jBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarActionPerformed
         // TODO add your handling code here:
-        jdEscritorio.removeAll();
-        jdEscritorio.repaint();
+        Escritorio.removeAll();
+        Escritorio.repaint();
         AgregarProducto ap = new AgregarProducto();
         ap.setVisible(true);
-        jdEscritorio.add(ap);
-        jdEscritorio.moveToFront(ap);
+        Escritorio.add(ap);
+        Escritorio.moveToFront(ap);
         
     }//GEN-LAST:event_jBAgregarActionPerformed
 
+    private void jbVerProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerProductoActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        TablaProductos adp=new TablaProductos();
+        adp.setVisible(true);
+        Escritorio.add(adp);
+        Escritorio.moveToFront(adp);
+    }//GEN-LAST:event_jbVerProductoActionPerformed
+ public static ArrayList<Producto> getProductos() {
+        return productos;
+    }
     /**
      * @param args the command line arguments
      */
@@ -147,10 +172,11 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane Escritorio;
     private javax.swing.JButton jBAgregar;
     private javax.swing.JComboBox<String> jCCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JDesktopPane jdEscritorio;
+    private javax.swing.JButton jbVerProducto;
     // End of variables declaration//GEN-END:variables
 }

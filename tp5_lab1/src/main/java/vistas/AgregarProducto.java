@@ -4,17 +4,26 @@
  */
 package vistas;
 
+import com.mycompany.tp5_lab1.Producto;
+import java.util.ArrayList;
+import java.util.TreeSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sapat
  */
 public class AgregarProducto extends javax.swing.JInternalFrame {
 
+   
+
     /**
      * Creates new form AgregarProducto
      */
     public AgregarProducto() {
+       
         initComponents();
+
     }
 
     /**
@@ -46,6 +55,11 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         jLabel3.setText("Nuevo Producto");
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,7 +112,40 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTNombreActionPerformed
 
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
 
+        double precio;
+
+        try {
+
+            precio = Double.parseDouble(jTPrecio.getText());
+
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(this, "Ingrese un numero entero");
+            jTPrecio.setText("");
+            jTPrecio.requestFocus();
+            return;
+        }
+
+        String descripcion = jTNombre.getText();
+
+        Producto guardar = new Producto(descripcion, precio);
+        ArrayList<Producto> lista=Menu.getProductos();
+        lista.add(guardar);
+
+            JOptionPane.showMessageDialog(this, "Producto Guardado");
+            limpiar();
+       
+
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void limpiar() {
+
+        jTNombre.setText("");
+        jTPrecio.setText("");
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBGuardar;
     private javax.swing.JLabel jLabel1;
